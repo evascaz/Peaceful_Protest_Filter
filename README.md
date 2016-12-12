@@ -1,6 +1,6 @@
 # The Trump Effect 
 
-![selfie](/pic2.png)=100x20
+![selfie](/pic2.png)
 ![selfie](/pic3.png)
 ![selfie](/pic1.png)
 
