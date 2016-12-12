@@ -22,6 +22,7 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     var dataOutput: AVCaptureVideoDataOutput?
     var dataOutputQueue: DispatchQueue?
     var previewView: UIView?
+    var cameraPosition: AVCaptureDevicePosition? //should I be using this?
     
     enum VideoCaptureError: Error {
         case sessionPresetNotAvailable
@@ -65,12 +66,37 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         }
     }
     
+    //positioning of the camera ?
     fileprivate func addPreviewToView(_ view: UIView) {
         self.preview = AVCaptureVideoPreviewLayer(session: session!)
         self.preview!.frame = view.bounds
-        
         view.layer.addSublayer(self.preview!)
+        
     }
+    
+    
+    //   self.preview!.zPosition = 1000; // issue here is that it moves the mouth detection not the camera view
+    
+
+    //ISNT WORKING
+    //bottomLayer.frame = CGRectOffset(topLayer.frame, 50, 50);
+    // self.preview!.zPosition = 1000;
+    //bottomLayer.frame = CGRectOffset(topLayer.frame, 50, 50);
+    
+    
+    //OPTION 1
+    // CGRect bounds=view.layer.bounds;
+    //  avLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    //  avLayer.bounds=bounds;
+    //  avLayer.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
+    
+    
+    //OPTION 2
+//    CGRect bounds=view.layer.bounds;
+//    avLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+//    avLayer.bounds=bounds;
+//    avLayer.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
+
     
     fileprivate func stopSession() {
         if let runningSession = session {
@@ -180,14 +206,21 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         let previewBox = preview!.frame
         
         previewView!.addSubview(mouthView)
+//        previewBox?.frame = CGRect(99, 34, 32, 32);
         
         var mouthFrame = transformFacialFeaturePosition(xPos, yPosition: yPos, videoRect: cleanAperture, previewRect: previewBox, isMirrored: isMirrored)
         
-        mouthFrame.origin.x -= 37
-        mouthFrame.origin.y -= 37
-        
+
+        mouthFrame.origin.x -= 50   //37 orginally
+        mouthFrame.origin.y -= 50   //37 orginally
         mouthView.frame = mouthFrame
+        
     }
+    
+    
+    //myImageView.frame = CGRectMake(99, 34, 32, 32);
+    
+    
     
     fileprivate func alterPreview(_ features: [CIFeature], cleanAperture: CGRect) {
         removeFeatureViews()

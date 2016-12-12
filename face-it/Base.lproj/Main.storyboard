@@ -3,13 +3,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Video Capture Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="VideoCaptureController" customModule="face_it" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="VideoCaptureController" customModule="Trump_Effect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -18,19 +20,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWW-aM-RJs">
-                                <frame key="frameInset" minX="55" minY="585" width="266" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWW-aM-RJs">
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="The Trump Effect">
-                                    <color key="titleColor" red="0.080523690430576389" green="0.13566131504513168" blue="0.88350785340000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.080523690430000003" green="0.135661315" blue="0.88350785340000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="screenshotTaken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EZP-Pl-LGC"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="YWW-aM-RJs" secondAttribute="bottom" constant="14" id="30G-py-kPq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YWW-aM-RJs" secondAttribute="trailing" constant="38" id="NQp-OJ-B55"/>
+                            <constraint firstItem="YWW-aM-RJs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="572" id="Vy0-n8-2Ua"/>
+                            <constraint firstItem="YWW-aM-RJs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="572" id="Ygt-b6-LHB"/>
+                            <constraint firstItem="YWW-aM-RJs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="39" id="oYm-S3-2Ac"/>
+                            <constraint firstItem="YWW-aM-RJs" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="266:667" id="t8x-GU-fJz"/>
+                            <constraint firstItem="YWW-aM-RJs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uVp-hN-uHD"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="screenShotButton" destination="YWW-aM-RJs" id="G9j-vx-wbr"/>
