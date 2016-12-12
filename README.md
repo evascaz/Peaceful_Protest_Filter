@@ -2,7 +2,7 @@
 
 The Trump Effect is a filter that uses mouth detection in the AVFoundation framework in swift. 
 
-I created it to bring attention to a report that came out of the [Southern Poverty Law Center's Teacher Tolerance Project](https://www.splcenter.org/20161128/trump-effect-impact-2016-presidential-election-our-nations-schools) did on the impact of Donald Trump's 2016 Presidenial campaign in U.S schools. 
+I created it to bring attention to a report that came out of the [Southern Poverty Law Center's Teacher Tolerance Project](https://www.splcenter.org/20161128/trump-effect-impact-2016-presidential-election-our-nations-schools) on the impact of Donald Trump's 2016 Presidenial campaign on discrimination in U.S schools. 
 
 You can read the full report of [The Trump Effect](https://www.splcenter.org/sites/default/files/splc_the_trump_effect.pdf)
 
