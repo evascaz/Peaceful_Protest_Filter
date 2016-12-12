@@ -1,10 +1,9 @@
 # The Trump Effect 
 
-<img src="pic2.PNG" width="200" height="400"/>
+<img src="pic2.PNG" width="300" height="600"/>
+<img src="pic3.png" width="300" height="600"/>
 
-![selfie](/pic2.PNG)
 
-![selfie](/pic1.png)
 
 
 The Trump Effect is a filter that uses mouth detection in the AVFoundation framework in swift. 
