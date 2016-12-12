@@ -1,6 +1,6 @@
 # The Trump Effect 
 
-![yay](/evascaz.github/The_Trump_Effect_App/pic1.png)
+![pic](/pic1.png)
 
 
 The Trump Effect is a filter that uses mouth detection in the AVFoundation framework in swift. 
