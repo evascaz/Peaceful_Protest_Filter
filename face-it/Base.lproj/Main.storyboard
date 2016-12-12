@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWW-aM-RJs">
-                                <frame key="frameInset" minX="58" minY="585" width="259" height="61"/>
+                                <frame key="frameInset" minX="55" minY="585" width="266" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <state key="normal" title="Thanks Trump">
-                                    <color key="titleColor" red="0.88350785340000004" green="0.06912931839" blue="0.061439332159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="The Trump Effect">
+                                    <color key="titleColor" red="0.080523690430576389" green="0.13566131504513168" blue="0.88350785340000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="screenshotTaken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EZP-Pl-LGC"/>

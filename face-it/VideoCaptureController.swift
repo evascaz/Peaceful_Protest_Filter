@@ -13,8 +13,6 @@ import CoreMedia
 class VideoCaptureController: UIViewController {
     var videoCapture: VideoCapture?
     
-    
-    
     override func viewDidLoad() {
         videoCapture = VideoCapture()
         startCapturing()
@@ -54,35 +52,37 @@ class VideoCaptureController: UIViewController {
             UIGraphicsEndImageContext()
             UIImageWriteToSavedPhotosAlbum(screenshot!, nil, nil, nil)
             print("screenshot taken")
-
+        
+        func screenShotMethod() {
+            let layer = UIApplication.shared.keyWindow!.layer
+            let scale = UIScreen.main.scale
+            UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+            
+            layer.render(in: UIGraphicsGetCurrentContext()!)
+            let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            UIImageWriteToSavedPhotosAlbum(screenshot!, nil, nil, nil)
+            print("screenshot registered")
+        }
 
     }
     
 
     
-    //           let screenshot:VideoCapture = UIGraphicsGetImageFromCurrentImageContext()
 
-    
-    
 
-    
-
-//    func stopCapturing() {
-//        VideoCapture!.stopCapturing()
-//    }
-    
     func touchDown(_ sender: AnyObject) {
         let button = sender as! UIButton
         button.setTitle("Stop", for: UIControlState())
         
-//        startCapturing()
+
     }
     
     func touchUp(_ sender: AnyObject) {
         let button = sender as! UIButton
         button.setTitle("Start", for: UIControlState())
         
-//        stopCapturing()
     }
     
     
