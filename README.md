@@ -1,8 +1,6 @@
 # The Trump Effect 
 
-<img src="pic2.PNG" alt="Drawing" style="width=20px, height=50px"/>
-
-
+<img src="pic2.PNG" width="200" height="400"/>
 
 ![selfie](/pic2.PNG)
 
