@@ -1,7 +1,8 @@
 # The Trump Effect 
+<img src="pic2.PNG" alt="Drawing" style="width: 40px;"/>
 
 ![selfie](/pic2.PNG)
-![selfie](/pic3.png)
+
 ![selfie](/pic1.png)
 
 
