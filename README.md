@@ -1,7 +1,7 @@
 # The Trump Effect 
 
-<img src="pic2.PNG" width="300" height="600"/>
-<img src="pic1.png" width="300" height="600"/>
+<img src="pic2.PNG" width="320" height="600"/>
+<img src="pic1.png" width="320" height="600"/>
 
 
 
