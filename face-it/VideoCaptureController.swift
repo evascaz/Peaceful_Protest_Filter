@@ -9,14 +9,17 @@
 import Foundation
 import UIKit
 import CoreMedia
+import AVFoundation
 
 class VideoCaptureController: UIViewController {
     var videoCapture: VideoCapture?
     
+    @IBOutlet weak var buttonView: UIView!
     override func viewDidLoad() {
         videoCapture = VideoCapture()
         startCapturing()
-    
+        
+        self.view.addSubview(buttonView)
     
     }
     
@@ -44,7 +47,9 @@ class VideoCaptureController: UIViewController {
 
     // when you press button take screenshot
     @IBAction func screenshotTaken(_ sender: UIButton) {
-    
+        
+            //capturePicture()
+        
 
             UIGraphicsBeginImageContext(self.view!.bounds.size)
             self.view!.window!.layer.render(in: UIGraphicsGetCurrentContext()!)
@@ -53,18 +58,18 @@ class VideoCaptureController: UIViewController {
             UIImageWriteToSavedPhotosAlbum(screenshot!, nil, nil, nil)
             print("screenshot taken")
         
-        func screenShotMethod() {
-            let layer = UIApplication.shared.keyWindow!.layer
-            let scale = UIScreen.main.scale
-            UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
-            
-            layer.render(in: UIGraphicsGetCurrentContext()!)
-            let screenshot = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            
-            UIImageWriteToSavedPhotosAlbum(screenshot!, nil, nil, nil)
-            print("screenshot registered")
-        }
+//        func screenShotMethod() {
+//            let layer = UIApplication.shared.keyWindow!.layer
+//            let scale = UIScreen.main.scale
+//            UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+//            
+//            layer.render(in: UIGraphicsGetCurrentContext()!)
+//            let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+//            UIGraphicsEndImageContext()
+//            
+//            UIImageWriteToSavedPhotosAlbum(screenshot!, nil, nil, nil)
+//            print("screenshot registered")
+//        }
 
     }
     
@@ -83,6 +88,33 @@ class VideoCaptureController: UIViewController {
         let button = sender as! UIButton
         button.setTitle("Start", for: UIControlState())
         
+    }
+    
+    func capturePicture(){
+        
+        //println("Capturing image")
+        videoCapture?.image?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+        videoCapture?.session?.addOutput(videoCapture?.dataOutput)
+        
+        if let videoConnection = videoCapture?.image?.connection(withMediaType: AVMediaTypeVideo){
+            videoCapture?.image?.captureStillImageAsynchronously(from: videoConnection, completionHandler: {
+                (sampleBuffer, error) in
+                var imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
+                var dataProvider = CGDataProvider(data: imageData as! CFData)
+                var cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
+                var image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
+                
+                var imageView = UIImageView(image: image)
+                imageView.frame = CGRect(x:0, y:0, width:720, height:1280)
+                
+                //Show the captured image to
+                self.view.addSubview(imageView)
+                
+                //Save the captured preview to image
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                
+            })
+        }
     }
     
     

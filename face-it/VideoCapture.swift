@@ -22,7 +22,11 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     var dataOutput: AVCaptureVideoDataOutput?
     var dataOutputQueue: DispatchQueue?
     var previewView: UIView?
+    var connection:AVCaptureConnection?
+    var image:AVCaptureStillImageOutput?
     var cameraPosition: AVCaptureDevicePosition? //should I be using this?
+    
+//     private var bufferFrameQueue     : dispatch_queue_t!
     
     enum VideoCaptureError: Error {
         case sessionPresetNotAvailable
@@ -34,14 +38,18 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     override init() {
         super.init()
         
+        
+        
         device = VideoCaptureDevice.create()
+        
+        
         
         faceDetector = FaceDetector()
     }
     
     fileprivate func setSessionPreset() throws {
-        if (session!.canSetSessionPreset(AVCaptureSessionPreset640x480)) {
-            session!.sessionPreset = AVCaptureSessionPreset640x480
+        if (session!.canSetSessionPreset(AVCaptureSessionPresetHigh)) {
+            session!.sessionPreset = AVCaptureSessionPresetHigh
         }
         else {
             throw VideoCaptureError.sessionPresetNotAvailable
@@ -73,30 +81,6 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         view.layer.addSublayer(self.preview!)
         
     }
-    
-    
-    //   self.preview!.zPosition = 1000; // issue here is that it moves the mouth detection not the camera view
-    
-
-    //ISNT WORKING
-    //bottomLayer.frame = CGRectOffset(topLayer.frame, 50, 50);
-    // self.preview!.zPosition = 1000;
-    //bottomLayer.frame = CGRectOffset(topLayer.frame, 50, 50);
-    
-    
-    //OPTION 1
-    // CGRect bounds=view.layer.bounds;
-    //  avLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    //  avLayer.bounds=bounds;
-    //  avLayer.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
-    
-    
-    //OPTION 2
-//    CGRect bounds=view.layer.bounds;
-//    avLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-//    avLayer.bounds=bounds;
-//    avLayer.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
-
     
     fileprivate func stopSession() {
         if let runningSession = session {
@@ -304,9 +288,35 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         session = nil
         previewView = nil
     }
+
 }
 
 
+
+// changing camera position notes 
+
+
+//   self.preview!.zPosition = 1000; // issue here is that it moves the mouth detection not the camera view
+
+
+//ISNT WORKING
+//bottomLayer.frame = CGRectOffset(topLayer.frame, 50, 50);
+// self.preview!.zPosition = 1000;
+//bottomLayer.frame = CGRectOffset(topLayer.frame, 50, 50);
+
+
+//OPTION 1
+// CGRect bounds=view.layer.bounds;
+//  avLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+//  avLayer.bounds=bounds;
+//  avLayer.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
+
+
+//OPTION 2
+//    CGRect bounds=view.layer.bounds;
+//    avLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+//    avLayer.bounds=bounds;
+//    avLayer.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
 
 
 
